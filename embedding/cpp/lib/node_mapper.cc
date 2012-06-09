@@ -21,6 +21,7 @@ extern "C" {
 #include "jsapi.h"
 }
 
+#include <assert.h>
 #include "node_mapper.h"
 
 #include <fstream>
