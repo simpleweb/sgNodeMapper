@@ -1,0 +1,8 @@
+php_sgnodemapper.lo: /home/vagrant/sgNodeMapper/embedding/php/php_sgnodemapper.cc
+	$(LIBTOOL) --mode=compile $(CXX) -I../cpp/lib -I. -I/home/vagrant/sgNodeMapper/embedding/php $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /home/vagrant/sgNodeMapper/embedding/php/php_sgnodemapper.cc -o php_sgnodemapper.lo 
+$(phplibdir)/sgnodemapper.la: ./sgnodemapper.la
+	$(LIBTOOL) --mode=install cp ./sgnodemapper.la $(phplibdir)
+
+./sgnodemapper.la: $(shared_objects_sgnodemapper) $(SGNODEMAPPER_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_sgnodemapper) $(SGNODEMAPPER_SHARED_LIBADD)
+
